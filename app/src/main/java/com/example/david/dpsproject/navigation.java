@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -174,6 +175,22 @@ public class navigation extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode==RESULT_OK){
+            if(requestCode==1){
+                final String action = data.getDataString();
+                String prefix = "image";
+                String split = action.substring(action.indexOf(prefix)+prefix.length());
+                TextView textView = (TextView)findViewById(R.id.uploadTextview);
+                textView.setText("/image"+split);
+            }
+        }
+        else{
+            Toast.makeText(this,"Something went wrong",Toast.LENGTH_SHORT).show();
+        }
     }
 }
 

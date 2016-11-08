@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textView"
+        android:id="@+id/uploadTextview"
         android:layout_above="@+id/upload"
         android:layout_alignStart="@+id/upload" />
 

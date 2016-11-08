@@ -3,6 +3,7 @@ package com.example.david.dpsproject;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,6 +43,7 @@ public class CreatePostImage  extends Fragment implements View.OnClickListener{
                 final Intent galleryIntent = new Intent();
                 galleryIntent.setType("image/*");
                 galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                getActivity().startActivityForResult(galleryIntent, 1);
 
 
                 break;
