@@ -182,10 +182,10 @@ public class navigation extends AppCompatActivity
         if(resultCode==RESULT_OK){
             if(requestCode==1){
                 final String action = data.getDataString();
-                String prefix = "image";
+                String prefix = "/image";
                 String split = action.substring(action.indexOf(prefix)+prefix.length());
                 TextView textView = (TextView)findViewById(R.id.uploadTextview);
-                textView.setText("/image"+split);
+                textView.setText("image"+split);
             }
         }
         else{

@@ -14,12 +14,13 @@ public class Post implements Serializable {
     private String Title;
     private String key;
     private String Description;
+    private int File;
     private ArrayList<Comment> comments;
     Post(){
 
     }
 
-    Post(String key, int no, int yes, String posterId, String title, ArrayList<Comment> comments, String description){
+    Post(String key, int no, int yes, String posterId, String title, ArrayList<Comment> comments, String description,int file){
 
         this.key = key;
         No = no;
@@ -28,12 +29,14 @@ public class Post implements Serializable {
         Title = title;
         this.comments = comments;
         Description = description;
+        File=file;
     }
-    Post(String posterId,String title,String description){
+    Post(String posterId,String title,String description,int file){
         Yes=0;No=0;
         PosterId=posterId;
         Title=title;
         Description=description;
+        File=file;
     }
     public ArrayList<Comment> getComments() {
         return comments;

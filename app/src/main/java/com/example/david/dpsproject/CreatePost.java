@@ -70,7 +70,7 @@ public class CreatePost extends Fragment implements View.OnClickListener{
                     try {
 
                         SharedPreferences preferences = getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-                        Post post = new Post(preferences.getString("UID",""),title.getText().toString(),desc.getText().toString());
+                        Post post = new Post(preferences.getString("UID",""),title.getText().toString(),desc.getText().toString(),0);
                         if (dataSnapshot.getValue() != null) {
 
                             DatabaseReference postref=dbReference.child("Sub").child(sub_cat).child("posts").push();
@@ -83,7 +83,7 @@ public class CreatePost extends Fragment implements View.OnClickListener{
                         } else {
                             Sub sub = new Sub();
 
-                            Post first_post = new Post("ADMIN","FIRST POST OF THE SUB",""); // first one
+                            Post first_post = new Post("ADMIN","FIRST POST OF THE SUB","",0); // first one
 
                             sub.pushPost(first_post);
                             dbReference.child("Sub").child(sub_cat).setValue(sub);
