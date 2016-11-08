@@ -75,6 +75,23 @@ public class navigation extends AppCompatActivity
 
             }
         });
+        fab_image.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                fab_desc.hide();
+                fab_image.hide();
+                android.app.FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_frame,new CreatePostImage()).commit();
+            }
+        });
+        fab_desc.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                fab_desc.hide();
+                fab_image.hide();
+                android.app.FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_frame,new CreatePost()).commit();
+            }
+        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

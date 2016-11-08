@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="123dp"
+        android:layout_marginBottom="143dp"
         android:layout_marginRight="16dp"
         android:src="@drawable/type"
         android:background="#fb8200" />
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="80dp"
         android:layout_marginRight="16dp"
         android:src="@drawable/images"
         android:background="#fb8200" />
