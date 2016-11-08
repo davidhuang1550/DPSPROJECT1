@@ -148,6 +148,10 @@ public class FrontPage extends Fragment {
 
 
         fab = (FloatingActionButton) getActivity().findViewById(R.id.compose);
+        FloatingActionButton fab_image = (FloatingActionButton) getActivity().findViewById(R.id.compse_images);
+        FloatingActionButton fab_desc = (FloatingActionButton) getActivity().findViewById(R.id.compse_desc);
+        if(fab_image!=null)fab_image.hide();
+        if(fab_desc!=null)fab_desc.hide();
         if(fab!=null)fab.show();
 
         return myView;

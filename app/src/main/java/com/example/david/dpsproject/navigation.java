@@ -47,13 +47,24 @@ public class navigation extends AppCompatActivity
         firebaseUser = authentication.getCurrentUser();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.compose);
+        final FloatingActionButton fab_image = (FloatingActionButton) findViewById(R.id.compse_images);
+        final FloatingActionButton fab_desc = (FloatingActionButton) findViewById(R.id.compse_desc);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 firebaseUser = authentication.getCurrentUser();
                if(firebaseUser!=null){
-                   android.app.FragmentManager fragmentManager = getFragmentManager();
-                   fragmentManager.beginTransaction().replace(R.id.content_frame,new CreatePost()).commit();
+                   if(fab_image.getVisibility()==View.VISIBLE && fab_desc.getVisibility()==view.VISIBLE){
+                       fab_desc.hide();
+                       fab_image.hide();
+                   }
+                   else{
+                       fab_desc.show();
+                       fab_image.show();
+                   }
+
+                   //android.app.FragmentManager fragmentManager = getFragmentManager();
+                   //fragmentManager.beginTransaction().replace(R.id.content_frame,new CreatePost()).commit();
                }
                 else{
                    PleaseLogin pleaseLogin = new PleaseLogin();
