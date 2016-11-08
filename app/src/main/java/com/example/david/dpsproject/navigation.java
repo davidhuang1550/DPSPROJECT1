@@ -53,7 +53,7 @@ public class navigation extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 firebaseUser = authentication.getCurrentUser();
-               if(firebaseUser!=null){
+               if(firebaseUser!=null){ // show and hide compose
                    if(fab_image.getVisibility()==View.VISIBLE && fab_desc.getVisibility()==view.VISIBLE){
                        fab_desc.hide();
                        fab_image.hide();
@@ -63,8 +63,6 @@ public class navigation extends AppCompatActivity
                        fab_image.show();
                    }
 
-                   //android.app.FragmentManager fragmentManager = getFragmentManager();
-                   //fragmentManager.beginTransaction().replace(R.id.content_frame,new CreatePost()).commit();
                }
                 else{
                    PleaseLogin pleaseLogin = new PleaseLogin();
@@ -75,7 +73,7 @@ public class navigation extends AppCompatActivity
 
             }
         });
-        fab_image.setOnClickListener(new View.OnClickListener(){
+        fab_image.setOnClickListener(new View.OnClickListener(){ // go to create image
             @Override
             public void onClick(View view) {
                 fab_desc.hide();
@@ -84,7 +82,7 @@ public class navigation extends AppCompatActivity
                 fragmentManager.beginTransaction().replace(R.id.content_frame,new CreatePostImage()).commit();
             }
         });
-        fab_desc.setOnClickListener(new View.OnClickListener(){
+        fab_desc.setOnClickListener(new View.OnClickListener(){ // go to create desc
             public void onClick(View view) {
                 fab_desc.hide();
                 fab_image.hide();

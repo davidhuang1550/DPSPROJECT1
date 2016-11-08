@@ -7,12 +7,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * Created by xlhuang3 on 11/8/2016.
  */
-public class CreatePostImage  extends Fragment{
+public class CreatePostImage  extends Fragment implements View.OnClickListener{
     private View myView;
+    private Button Upload;
+    private Button Create;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -21,13 +24,33 @@ public class CreatePostImage  extends Fragment{
         FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.compose);
         if(fab!=null)fab.hide(); // hide it in the create post area
 
+        Upload = (Button)myView.findViewById(R.id.upload);
+        Create = (Button)myView.findViewById(R.id.post_button_upload);
 
-        final Intent galleryIntent = new Intent();
-        galleryIntent.setType("image/*");
-        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+        Upload.setOnClickListener(this);
+        Create.setOnClickListener(this);
 
 
         return myView;
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.upload:
+                final Intent galleryIntent = new Intent();
+                galleryIntent.setType("image/*");
+                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+
+
+                break;
+            case R.id.post_button_upload:
+
+                break;
+
+
+
+        }
     }
 }

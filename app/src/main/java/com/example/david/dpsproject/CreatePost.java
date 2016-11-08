@@ -1,6 +1,5 @@
 package com.example.david.dpsproject;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
@@ -8,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -24,11 +22,6 @@ import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by david on 2016-10-27.
@@ -47,7 +40,7 @@ public class CreatePost extends Fragment implements View.OnClickListener{
         myView = inflater.inflate(R.layout.create_post,container,false);
         authentication= FirebaseAuth.getInstance(); // get instance of my firebase console
         dbReference = FirebaseDatabase.getInstance().getReference(); // access to database
-        post_button = (Button)myView.findViewById(R.id.post_button);
+        post_button = (Button)myView.findViewById(R.id.post_button_upload);
 
 
         FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.compose);
