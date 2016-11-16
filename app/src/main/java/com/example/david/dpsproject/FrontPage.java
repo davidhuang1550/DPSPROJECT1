@@ -80,6 +80,7 @@ public class FrontPage extends Fragment {
         }
         else{
             nav_Menu.findItem(R.id.login).setVisible(true);
+            nav_Menu.findItem(R.id.profile).setVisible(false);
             nav_Menu.findItem(R.id.signout).setVisible(false);
         }
         posts =new ArrayList<Post>();

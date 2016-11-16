@@ -1,7 +1,12 @@
 package com.example.david.dpsproject;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -27,6 +32,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
+import java.net.URI;
+
 public class navigation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     protected Toolbar toolbar;
@@ -36,6 +44,9 @@ public class navigation extends AppCompatActivity
     FirebaseUser firebaseUser;
     FirebaseAuth.AuthStateListener authStateListener;
     NavigationView navigationView;
+    String filePath;
+
+    Uri imageUpload =null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +61,10 @@ public class navigation extends AppCompatActivity
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.compose);
         final FloatingActionButton fab_image = (FloatingActionButton) findViewById(R.id.compse_images);
         final FloatingActionButton fab_desc = (FloatingActionButton) findViewById(R.id.compse_desc);
+        fab_desc.setSize(1);
+        fab_image.setSize(1);
+
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -152,7 +167,10 @@ public class navigation extends AppCompatActivity
 
         if (id == R.id.frontpage) {
             fragmentManager.beginTransaction().replace(R.id.content_frame,new FrontPage(),"FrontPage").commit();
-        } else if (id == R.id.login) {
+        }
+        else if(id==R.id.profile){
+            fragmentManager.beginTransaction().replace(R.id.content_frame,new Profile()).commit();
+        }else if (id == R.id.login) {
             fragmentManager.beginTransaction().replace(R.id.content_frame,new LogIn()).commit();
         } else if(id == R.id.search){
            // fragmentManager.beginTransaction().add(R.id.content_frame,new SearchFragment(),"search").commit();
@@ -176,11 +194,30 @@ public class navigation extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode==RESULT_OK){
             if(requestCode==1){
+               imageUpload = data.getData();
+                String[] filePathColumn={MediaStore.Images.Media.DATA};
+
+                Cursor cursor = getContentResolver().query(imageUpload,filePathColumn,null,null,null);
+                cursor.moveToFirst();
+
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                filePath= cursor.getString((columnIndex));
+                cursor.close();
+                Bitmap bitmap;
+             //   try {
+          //          bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUpload));
+         //       }catch (IOException ie){
+
+         //       }
+
+
+
+
+
                 final String action = data.getDataString();
                 String prefix = "/image";
                 String split = action.substring(action.indexOf(prefix)+prefix.length());

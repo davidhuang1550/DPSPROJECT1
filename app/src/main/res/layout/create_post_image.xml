@@ -66,7 +66,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text=": Image"
         android:id="@+id/uploadTextview"
         android:layout_above="@+id/upload"
         android:layout_alignStart="@+id/upload" />

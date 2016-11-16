@@ -1,5 +1,6 @@
 package com.example.david.dpsproject;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -14,13 +15,14 @@ public class Post implements Serializable {
     private String Title;
     private String key;
     private String Description;
-    private int File;
+
+    private String Image;
     private ArrayList<Comment> comments;
     Post(){
 
     }
 
-    Post(String key, int no, int yes, String posterId, String title, ArrayList<Comment> comments, String description,int file){
+    Post(String key, int no, int yes, String posterId, String title, ArrayList<Comment> comments, String description,String image){
 
         this.key = key;
         No = no;
@@ -29,14 +31,27 @@ public class Post implements Serializable {
         Title = title;
         this.comments = comments;
         Description = description;
-        File=file;
+        Image=image;
     }
-    Post(String posterId,String title,String description,int file){
+    Post(String posterId,String title,String description){
         Yes=0;No=0;
         PosterId=posterId;
         Title=title;
         Description=description;
-        File=file;
+    }
+    Post(String posterId,String title,String description,String image){
+        Yes=0;No=0;
+        PosterId=posterId;
+        Title=title;
+        Description=description;
+        Image=image;
+    }
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
     }
     public ArrayList<Comment> getComments() {
         return comments;
